@@ -22,6 +22,15 @@ func main() {
 		}
 
 		firstWord := cleanedInput[0]
-		fmt.Printf("Your command was: %s\n", firstWord)
+		if cmd, ok := getCommands()[firstWord]; ok {
+			err := cmd.callback()
+			if err != nil {
+				fmt.Println(err)
+			}
+			
+		} else {
+			fmt.Println("Unknown command")
+		}
+		
 	}
 }
