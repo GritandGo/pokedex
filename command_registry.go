@@ -1,10 +1,15 @@
 package main
 
 
+type config struct {
+	commandConfig map[string]cliCommand
+}
+
+
 type cliCommand struct {
 	name string
 	description string
-	callback func() error
+	callback func(*config) error
 }
 
 func getCommands() map[string]cliCommand {
