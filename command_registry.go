@@ -1,10 +1,13 @@
 package main
-
+import (
+	"github.com/GritandGo/pokedex/internal/pokeapi"
+)
 
 type config struct {
 	commandConfig map[string]cliCommand
 	Next *string
 	Previous *string
+	pokeapiClient pokeapi.Client
 }
 
 

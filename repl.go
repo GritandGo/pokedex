@@ -12,7 +12,10 @@ func startRepl(cfg *config) {
 	
 	for {
 		fmt.Print("Pokedex > ")
-		scanner.Scan()
+		if !scanner.Scan() {
+			break
+		}
+
 		input := strings.ToLower(scanner.Text())
 		cleanedInput := strings.Fields(input)
 		
@@ -32,7 +35,12 @@ func startRepl(cfg *config) {
 		}
 		
 	}
+
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "Error reading standard input:", err)
+	}
 }
+
 
 
 func cleanInput(text string) []string {
