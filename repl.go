@@ -25,7 +25,7 @@ func startRepl(cfg *config) {
 
 		firstWord := cleanedInput[0]
 		if cmd, ok := cfg.commandConfig[firstWord]; ok {
-			err := cmd.callback(cfg)
+			err := cmd.callback(cfg, cleanedInput[1:])
 			if err != nil {
 				fmt.Println(err)
 			}
