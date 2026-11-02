@@ -1,9 +1,11 @@
 package main
+
 import (
-	"fmt"
-	"os"
 	"errors"
+	"fmt"
 	"math/rand"
+	"os"
+
 )
 
 
@@ -151,5 +153,21 @@ func commandInspect(cfg *config, args[]string) error {
 	}
 
 
+	return nil
+}
+
+
+func commandPokedex(cfg* config, arg[]string) error {
+	if len(cfg.Pokedex) == 0 {
+		fmt.Println("Pokedex is empty! 'explore' to find Pokémon")
+		return nil
+	}	
+
+
+	fmt.Println("Your Pokedex:")
+	for pokemon := range cfg.Pokedex {
+		fmt.Printf(" - %s\n", pokemon)
+	}
+	
 	return nil
 }
